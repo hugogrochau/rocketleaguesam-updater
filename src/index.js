@@ -1,7 +1,7 @@
 import apiClient from 'rocketleaguesam-api-client';
-import rankApisClient, { TRACKER } from '../../rocket-league-apis-client';
+import rankApisClient, { TRACKER } from 'rocket-league-apis-client';
 import { shouldUpdate, getAdjustedTime } from './util';
-import updateQueue from './queue';
+import createUpdateQueue from './queue';
 
 const checkConstant = (c) => {
   if (!process.env[c]) {
@@ -34,6 +34,7 @@ if (process.env.ROCKETLEAGUE_TRACKER_NETWORK_API_KEY) {
     name: TRACKER.ROCKETLEAGUE_TRACKER_NETWORK,
     rate: process.env.ROCKETLEAGUE_TRACKER_NETWORK_RATE,
     api: rankApisClient({
+      tracker: TRACKER.ROCKETLEAGUE_TRACKER_NETWORK,
       apiKey: process.env.ROCKETLEAGUE_TRACKER_NETWORK_API_KEY,
       apiUrl: process.env.ROCKETLEAGUE_TRACKER_NETWORK_API_URL,
     }),
@@ -48,6 +49,7 @@ if (process.env.RLTRACKER_PRO_API_KEY) {
   trackers.push({
     name: TRACKER.RLTRACKER_PRO,
     api: rankApisClient({
+      tracker: TRACKER.RLTRACKER_PRO,
       apiKey: process.env.RLTRACKER_PRO_API_KEY,
       apiUrl: process.env.RLTRACKER_PRO_API_URL,
     }),
@@ -59,7 +61,7 @@ if (process.env.RLTRACKER_PRO_API_KEY) {
 
 console.log(`Starting full update at ${new Date().toISOString()}...`);
 
-const q = updateQueue(PRIORITY_UNIT, trackers, api);
+const q = createUpdateQueue(PRIORITY_UNIT, trackers, api);
 
 console.log('Pulling players...');
 
@@ -77,8 +79,6 @@ api.player.all()
     console.log('Players to update:');
     console.log(playersToUpdate.map((p) => p.name));
 
-    q.push(playersToUpdate, (err) => {
-      if (err) console.log(err);
-    });
+    q.push(playersToUpdate);
   })
   .catch((err) => console.log(`Error fetching players: ${err.message}`));

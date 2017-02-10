@@ -1,6 +1,5 @@
 // pulls player info from tracker and updates through the api
-export const updatePlayer = (player, tracker, internalApi) => {
-  return new Promise((resolve, reject) =>
+export const updatePlayer = (player, tracker, internalApi) => new Promise((resolve, reject) =>
     tracker.api(player.platform, player.id)
       .then((stats) =>
         internalApi.player.update({
@@ -17,4 +16,3 @@ export const updatePlayer = (player, tracker, internalApi) => {
       })
       .catch((err) => reject(err))
   );
-};
