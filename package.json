@@ -1,0 +1,49 @@
+{
+  "name": "rocketleaguesam-updater",
+  "version": "0.1.0",
+  "description": "Script to update players registered in rocketleaguesam.com",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": ". ./.env ; node dist/index.js",
+    "prestart": "npm run build",
+    "build": "babel src -s -D -d dist --ignore node_modules",
+    "lint": "eslint src test",
+    "lint:staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": "lint"
+  },
+  "pre-commit": "lint:staged",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugogrochau/rocketleaguesam-updater.git"
+  },
+  "author": "Hugo Grochau <hugo@grochau.com>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.4",
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "rocket-league-apis-client": "^0.1.0",
+    "rocketleaguesam-api-client": "^0.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.14.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "lint-staged": "^3.2.8",
+    "nodemon": "^1.11.0",
+    "pre-commit": "^1.2.2"
+  },
+  "keywords": [
+    "api",
+    "rocket",
+    "league",
+    "sam",
+    "South",
+    "America"
+  ]
+}
