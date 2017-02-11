@@ -27,7 +27,7 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
     "babel-register": "^6.22.0",
-    "rocket-league-apis-client": "^0.2.2",
+    "rocket-league-apis-client": "^0.2.3",
     "rocketleaguesam-api-client": "^0.3.4"
   },
   "devDependencies": {

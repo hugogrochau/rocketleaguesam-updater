@@ -5,7 +5,7 @@ export const updatePlayer = (player, tracker, internalApi) => new Promise((resol
         internalApi.player.update({
           platform: player.platform,
           id: player.id,
-          body: stats,
+          body: stats.player,
         })
       )
       .then((info) => {
