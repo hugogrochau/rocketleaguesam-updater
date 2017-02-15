@@ -1,3 +1,5 @@
+import omit from 'lodash/omit';
+
 // pulls player info from tracker and updates through the api
 export const updatePlayer = (player, tracker, internalApi) => new Promise((resolve, reject) =>
     tracker.api(player.platform, player.id)
@@ -5,7 +7,7 @@ export const updatePlayer = (player, tracker, internalApi) => new Promise((resol
         internalApi.player.update({
           platform: player.platform,
           id: player.id,
-          body: stats.player,
+          body: omit(stats.player, ['id', 'platform']),
         })
       )
       .then((info) => {
