@@ -2,4 +2,4 @@
 Script to update players registered in rocketleaguesam.com
 
 ## Authors
-* @hugogrochau
+* [hugogrochau](http://hugo.grochau.com)
