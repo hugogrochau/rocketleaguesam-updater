@@ -5,7 +5,7 @@ import { updatePlayer } from './external-actions';
 
 const handleError = (err, tracker) => {
   const errMessage = err.message || 'Unknown Error';
-  const allowedErrors = ['PlayerNotFound', 'InputError', 'UnknownError'];
+  const allowedErrors = ['DatabaseError', 'PlayerNotFound', 'InputError', 'UnknownError'];
 
   // Mark tracker down on invalid errors
   if (!allowedErrors.includes(errMessage)) {
