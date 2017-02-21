@@ -52,7 +52,6 @@ export default (PRIORITY_UNIT, API_URL, API_VERSION, trackers) => {
 
         const { err, tracker } = errWithTracker;
         const allowedErrors = ['DatabaseError', 'PlayerNotFound', 'InputError', 'UnknownError'];
-        console.log(err);
         const errMessage = err.message || 'Unknown Error';
 
         console.log(`Failed to update ${player.name} because of: ${errMessage}`);
