@@ -24,7 +24,7 @@ export default (PRIORITY_UNIT, API_URL, API_VERSION, trackers) => {
 
   console.log('Pulling players...');
 
-  api.player.all()
+  api.player.all({ pageSize: 100000 })
     .then((jsonData) => {
       console.log('Pulled players');
 
