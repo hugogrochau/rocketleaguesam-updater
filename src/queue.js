@@ -1,5 +1,5 @@
 import queue from 'async/queue';
-import { TRACKERS } from 'rocket-league-apis-client';
+import { TRACKER } from 'rocket-league-apis-client';
 import { timeToWaitBeforeNextRequest } from './util';
 import { updatePlayer } from './external-actions';
 
@@ -9,7 +9,7 @@ export default (PRIORITY_UNIT, trackers, internalApi) =>
    queue((player, callback) => {
      const filteredTrackers = trackers.filter((t) =>
       t.isUp && // remove if tracker is marked as down
-      (player.platform !== 2 || t.name !== TRACKERS.RLTRACKER_PRO) // RL Tracker can't handle xbox
+      (player.platform !== 2 || t.name !== TRACKER.RLTRACKER_PRO) // RL Tracker can't handle xbox
     );
 
      if (filteredTrackers.length === 0) {
